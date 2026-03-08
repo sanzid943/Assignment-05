@@ -112,6 +112,22 @@ const displayIssues=(issues)=>{
     manageSpinner(false);
 }
 
+const showSearch = () => {
+    const input = document.getElementById('input-search');
+    const searchValue = input.value.trim().toLowerCase();
+
+    if(searchValue === ""){
+        displayIssues(allIssues);
+        return;
+    }
+
+    const filteredIssues = allIssues.filter(issue =>
+        issue.title.toLowerCase().includes(searchValue)
+    );
+
+    displayIssues(filteredIssues);
+}
+
 loadIssues();
 
 const allBtn = document.getElementById("all-btn");
